@@ -155,6 +155,7 @@ const CERTIFICATIONS = [
   ["IBM", "Generative AI — watsonx.ai"],
   ["COURSERA", "Machine Learning"],
   ["MICROSOFT", "Power BI Data Analyst"],
+  ["GOOGLE CLOUD SKILLS BOOST", "BigQuery and Cloud Data Analytics"],
   ["HACKOSQUAD", "CTF 2026 — Rank #100"],
 ];
 
