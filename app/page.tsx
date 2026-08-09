@@ -245,90 +245,136 @@ export default function Portfolio() {
 
   if (loading) {
     return (
-      <div className="loader">
-        <div className="loaderOrb">
-          <div className="loaderCore">DN.</div>
-          <div className="loaderRing loaderRingA" />
-          <div className="loaderRing loaderRingB" />
+      <div className="proLoader">
+        <div className="loaderTop">
+          <strong>DN<span>.</span></strong>
+          <span>PORTFOLIO / 2026</span>
         </div>
+
+        <div className="loaderCenter">
+          <div className="loaderVisual">
+            <div className="loaderOrbit loaderOrbitA" />
+            <div className="loaderOrbit loaderOrbitB" />
+            <div className="loaderOrbit loaderOrbitC" />
+            <div className="loaderAxis loaderAxisX" />
+            <div className="loaderAxis loaderAxisY" />
+            <div className="loaderCore">DN</div>
+          </div>
+
+          <div className="loaderTitle">
+            <span>DEEP</span>
+            <span>NEMA<span className="loaderAccent">.</span></span>
+          </div>
+
+          <div className="loaderMeta">
+            <div>
+              <span>INITIALIZING PORTFOLIO</span>
+              <strong>AI / DATA / SOFTWARE</strong>
+            </div>
+            <div className="loaderStatus"><i /> SYSTEM READY</div>
+          </div>
+        </div>
+
         <div className="loaderBottom">
-          <span>DEEP NEMA</span>
-          <span>INITIALIZING / 2026</span>
+          <div className="loaderProgress"><span /></div>
+          <div><span>CREATIVE ENGINEERING</span><span>INDIA / 2026</span></div>
         </div>
+
         <style jsx global>{`
-          * {
-            box-sizing: border-box;
-          }
-          html,
-          body {
-            margin: 0;
-            background: #060708;
-          }
-          .loader {
-            min-height: 100vh;
-            width: 100%;
-            background:
-              radial-gradient(circle at 50% 50%, rgba(255, 69, 40, 0.1), transparent 22%),
-              #060708;
-            color: #f7f5ef;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+          * { box-sizing: border-box; }
+          html, body { margin: 0; background: #050607; }
+          .proLoader {
+            min-height: 100vh; width: 100%; padding: 28px 38px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            overflow: hidden; position: relative; color: #f5f2eb;
             font-family: Arial, Helvetica, sans-serif;
-            overflow: hidden;
+            background:
+              radial-gradient(circle at 50% 48%, rgba(255,76,48,.08), transparent 20%),
+              #050607;
           }
-          .loaderOrb {
-            position: relative;
-            width: 170px;
-            height: 170px;
-            display: grid;
-            place-items: center;
+          .proLoader::before {
+            content:""; position:absolute; inset:0; pointer-events:none; opacity:.35;
+            background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+              linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+            background-size:80px 80px;
+          }
+          .proLoader::after {
+            content:""; position:absolute; left:0; right:0; top:4px; height:1px;
+            background:#ff5537; box-shadow:0 0 18px rgba(255,85,55,.7);
+          }
+          .loaderTop,.loaderBottom {
+            position:relative; z-index:2; display:flex; justify-content:space-between;
+            color:#62686d; font-size:8px; letter-spacing:.2em;
+          }
+          .loaderTop strong { color:#f5f2eb; font-size:21px; letter-spacing:-.12em; }
+          .loaderTop strong span { color:#ff5537; }
+          .loaderCenter {
+            position:relative; z-index:2; width:min(1050px,90vw); margin:auto;
+            display:grid; grid-template-columns:.8fr 1.2fr; align-items:center; gap:60px;
+          }
+          .loaderVisual {
+            position:relative; width:min(320px,55vw); aspect-ratio:1;
+            margin:auto; display:grid; place-items:center;
           }
           .loaderCore {
-            width: 92px;
-            height: 92px;
-            border: 1px solid rgba(255, 79, 50, 0.7);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-weight: 900;
-            font-size: 25px;
-            letter-spacing: -0.08em;
-            box-shadow: 0 0 60px rgba(255, 69, 40, 0.12);
+            width:92px; height:92px; border:1px solid rgba(255,85,55,.65);
+            border-radius:50%; display:grid; place-items:center; font-size:18px;
+            font-weight:900; letter-spacing:-.08em;
+            box-shadow:0 0 65px rgba(255,85,55,.09), inset 0 0 35px rgba(255,85,55,.04);
           }
-          .loaderRing {
-            position: absolute;
-            inset: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 50%;
+          .loaderCore::after {
+            content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+            background:#ff5537; top:8%; right:16%; box-shadow:0 0 18px #ff5537;
           }
-          .loaderRingA {
-            animation: spin 3s linear infinite;
-            border-left-color: #ff4d32;
+          .loaderOrbit {
+            position:absolute; border:1px solid rgba(255,255,255,.11); border-radius:50%;
           }
-          .loaderRingB {
-            inset: 25px -12px;
-            transform: rotate(55deg);
-            animation: spinReverse 4.5s linear infinite;
-            border-right-color: rgba(255, 93, 60, 0.75);
+          .loaderOrbitA { inset:0; border-left-color:#ff5537; animation:loaderSpin 9s linear infinite; }
+          .loaderOrbitB { inset:35px -35px; transform:rotate(58deg); border-right-color:rgba(255,85,55,.42); animation:loaderSpinR 12s linear infinite; }
+          .loaderOrbitC { inset:-35px 55px; transform:rotate(-38deg); animation:loaderSpin 16s linear infinite; }
+          .loaderAxis { position:absolute; background:rgba(255,255,255,.08); }
+          .loaderAxisX { left:-30px; right:-30px; top:50%; height:1px; }
+          .loaderAxisY { top:-30px; bottom:-30px; left:50%; width:1px; }
+          .loaderTitle {
+            display:flex; flex-direction:column; font-size:clamp(70px,11vw,165px);
+            line-height:.76; letter-spacing:-.095em; font-weight:950;
           }
-          .loaderBottom {
-            position: fixed;
-            bottom: 28px;
-            left: 32px;
-            right: 32px;
-            display: flex;
-            justify-content: space-between;
-            color: #777b80;
-            font-size: 10px;
-            letter-spacing: 0.2em;
+          .loaderTitle > span:last-child { color:transparent; -webkit-text-stroke:1px #70757a; }
+          .loaderAccent { color:#ff5537 !important; -webkit-text-stroke:0 !important; }
+          .loaderMeta {
+            grid-column:1 / -1; display:flex; justify-content:space-between;
+            border-top:1px solid rgba(255,255,255,.08); padding-top:18px;
           }
-          @keyframes spin {
-            to { transform: rotate(360deg); }
+          .loaderMeta > div:first-child { display:flex; flex-direction:column; gap:7px; }
+          .loaderMeta span,.loaderMeta strong,.loaderStatus { font-size:8px; letter-spacing:.18em; }
+          .loaderMeta span { color:#63696e; }
+          .loaderMeta strong { color:#aaaeb1; font-weight:500; }
+          .loaderStatus { display:flex; align-items:center; gap:8px; color:#63696e; }
+          .loaderStatus i {
+            width:6px; height:6px; border-radius:50%; background:#ff5537;
+            box-shadow:0 0 13px #ff5537; animation:loaderPulse 1.1s infinite;
           }
-          @keyframes spinReverse {
-            to { transform: rotate(-360deg); }
+          .loaderProgress { width:230px; height:1px; background:rgba(255,255,255,.1); overflow:hidden; }
+          .loaderProgress span {
+            display:block; height:100%; width:0; background:#ff5537;
+            box-shadow:0 0 12px #ff5537; animation:loaderProgress 1.3s ease-out forwards;
+          }
+          .loaderBottom { align-items:center; }
+          .loaderBottom > div:last-child { display:flex; gap:30px; }
+          @keyframes loaderSpin { to { transform:rotate(360deg); } }
+          @keyframes loaderSpinR { to { transform:rotate(-360deg); } }
+          @keyframes loaderPulse { 50% { opacity:.35; transform:scale(.65); } }
+          @keyframes loaderProgress { to { width:100%; } }
+          @media (max-width:700px) {
+            .proLoader { padding:22px; }
+            .loaderCenter { grid-template-columns:1fr; gap:35px; }
+            .loaderVisual { width:230px; }
+            .loaderTitle { font-size:clamp(62px,20vw,110px); }
+            .loaderMeta { grid-column:auto; }
+            .loaderBottom > div:last-child { display:none; }
+          }
+          @media (prefers-reduced-motion:reduce) {
+            .loaderOrbit,.loaderStatus i,.loaderProgress span { animation:none !important; }
           }
         `}</style>
       </div>
@@ -379,13 +425,18 @@ export default function Portfolio() {
             <button onClick={() => scrollTo("contact")}>CONTACT</button>
           </div>
 
-          <button
-            className="motionButton"
-            onClick={() => setMotion((value) => !value)}
-          >
-            <span className={motion ? "liveDot" : "deadDot"} />
-            {motion ? "MOTION ON" : "MOTION OFF"}
-          </button>
+          <div className="navActions">
+            <a className="resumeButton" href="/resume.pdf" target="_blank" rel="noreferrer">
+              RESUME <span>↗</span>
+            </a>
+            <button
+              className="motionButton"
+              onClick={() => setMotion((value) => !value)}
+            >
+              <span className={motion ? "liveDot" : "deadDot"} />
+              {motion ? "MOTION ON" : "MOTION OFF"}
+            </button>
+          </div>
 
           <button
             className="menuButton"
@@ -430,34 +481,42 @@ export default function Portfolio() {
                 </strong>
               </div>
 
-              <button
-                className="scrollCue"
-                onClick={() => scrollTo("work")}
-              >
-                <span>EXPLORE WORK</span>
-                <b>↓</b>
-              </button>
+              <div className="heroActions">
+                <a className="resumeHeroButton" href="/resume.pdf" target="_blank" rel="noreferrer">
+                  VIEW RESUME <span>↗</span>
+                </a>
+                <button className="scrollCue" onClick={() => scrollTo("work")}>
+                  <span>EXPLORE WORK</span>
+                  <b>↓</b>
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* MARQUEE */}
-        <div className="marquee" aria-hidden="true">
+        <div className="marquee" aria-label="Areas of focus">
           <div className="marqueeTrack">
-            <span>GENERATIVE AI</span>
-            <i>✦</i>
-            <span>DATA ENGINEERING</span>
-            <i>✦</i>
-            <span>FULL STACK</span>
-            <i>✦</i>
-            <span>PRODUCT THINKING</span>
-            <i>✦</i>
-            <span>GENERATIVE AI</span>
-            <i>✦</i>
-            <span>DATA ENGINEERING</span>
-            <i>✦</i>
-            <span>FULL STACK</span>
-            <i>✦</i>
+            <div className="marqueeSet">
+              <span>SOFTWARE DEVELOPMENT</span>
+              <i>✦</i>
+              <span>GENERATIVE AI</span>
+              <i>✦</i>
+              <span>DATA ENGINEERING</span>
+              <i>✦</i>
+              <span>FULL STACK</span>
+              <i>✦</i>
+            </div>
+            <div className="marqueeSet" aria-hidden="true">
+              <span>SOFTWARE DEVELOPMENT</span>
+              <i>✦</i>
+              <span>GENERATIVE AI</span>
+              <i>✦</i>
+              <span>DATA ENGINEERING</span>
+              <i>✦</i>
+              <span>FULL STACK</span>
+              <i>✦</i>
+            </div>
           </div>
         </div>
 
@@ -998,6 +1057,16 @@ export default function Portfolio() {
           gap: 7px;
           align-items: center;
         }
+        .navActions { display:flex; align-items:center; gap:9px; }
+        .resumeButton {
+          border:1px solid rgba(255,85,55,.5); padding:9px 12px;
+          display:inline-flex; align-items:center; gap:12px; font-size:9px;
+          letter-spacing:.15em; transition:.3s ease;
+        }
+        .resumeButton span { color:var(--accent); font-size:14px; }
+        .resumeButton:hover { background:var(--accent); color:#120a08; transform:translateY(-2px); }
+        .resumeButton:hover span { color:#120a08; }
+
 
         .liveDot,
         .deadDot {
@@ -1122,6 +1191,17 @@ export default function Portfolio() {
           letter-spacing: 0.13em;
         }
 
+
+        .heroActions { display:flex; align-items:center; gap:10px; }
+        .resumeHeroButton {
+          border:1px solid rgba(255,85,55,.55); background:rgba(255,85,55,.08);
+          padding:14px 17px; display:flex; align-items:center; gap:28px;
+          font-size:9px; letter-spacing:.15em; transition:.35s ease;
+        }
+        .resumeHeroButton span { color:var(--accent); font-size:17px; }
+        .resumeHeroButton:hover { background:var(--accent); color:#120a08; transform:translateY(-5px); }
+        .resumeHeroButton:hover span { color:#120a08; }
+
         .scrollCue {
           border: 1px solid var(--line);
           background: rgba(255,255,255,0.02);
@@ -1151,30 +1231,48 @@ export default function Portfolio() {
         .marquee {
           position: relative;
           z-index: 3;
+          width: 100%;
           overflow: hidden;
           white-space: nowrap;
           border-top: 1px solid var(--line);
           border-bottom: 1px solid var(--line);
           padding: 22px 0;
           color: #555b61;
+          background: rgba(5, 6, 7, 0.32);
         }
 
         .marqueeTrack {
           width: max-content;
           display: flex;
           align-items: center;
-          gap: 40px;
-          animation: marquee 25s linear infinite;
+          animation: marquee 24s linear infinite;
+          will-change: transform;
+        }
+
+        .marqueeSet {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
         }
 
         .marquee span {
+          display: inline-flex;
+          align-items: center;
+          padding: 0 40px;
           font-size: 12px;
+          font-weight: 500;
           letter-spacing: 0.24em;
         }
 
         .marquee i {
           color: var(--accent);
+          font-size: 13px;
           font-style: normal;
+          text-shadow: 0 0 12px rgba(255, 85, 55, 0.45);
+        }
+
+        .marquee:hover .marqueeTrack {
+          animation-play-state: paused;
         }
 
         .sectionTop {
@@ -2186,9 +2284,9 @@ export default function Portfolio() {
             padding: 14px 5px;
           }
 
-          .motionButton {
-            display: none;
-          }
+          .navActions { margin-left:auto; margin-right:14px; }
+          .resumeButton { padding:8px 10px; }
+          .motionButton { display:none; }
 
           .menuButton {
             display: flex;
@@ -2231,10 +2329,10 @@ export default function Portfolio() {
           }
 
           .heroBottom {
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 35px;
+            align-items:flex-start; flex-direction:column; gap:35px;
           }
+          .heroActions { width:100%; flex-direction:column; align-items:stretch; }
+          .resumeHeroButton,.scrollCue { justify-content:space-between; }
 
           .section {
             padding-top: 100px;
@@ -2381,4 +2479,4 @@ export default function Portfolio() {
       `}</style>
     </>
   );
-} 
+}
