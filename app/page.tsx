@@ -427,9 +427,14 @@ export default function Portfolio() {
           </div>
 
           <div className="navActions">
-            <a className="resumeButton" href="/resume.pdf" target="_blank" rel="noreferrer">
+            <a
+              href="/deepnema(Resume).pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resumeButton">
               RESUME <span>↗</span>
             </a>
+
             <button
               className="motionButton"
               onClick={() => setMotion((value) => !value)}
@@ -483,8 +488,12 @@ export default function Portfolio() {
               </div>
 
               <div className="heroActions">
-                <a className="resumeHeroButton" href="/resume.pdf" target="_blank" rel="noreferrer">
-                  VIEW RESUME <span>↗</span>
+                <a
+                href="/deepnema(Resume).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="resumeHeroButton">
+                VIEW RESUME <span>↗</span>
                 </a>
                 <button className="scrollCue" onClick={() => scrollTo("work")}>
                   <span>EXPLORE WORK</span>
